@@ -1,0 +1,64 @@
+﻿<Window x:Class="CSharpProject.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="780" Width="1300" Closing="Window_Closing" Initialized="Window_Initialized">
+    <TabControl x:Name="tabControl" HorizontalAlignment="Left" Height="780" VerticalAlignment="Top" Width="1300" Margin="0,0,-6.4,-1">
+        <TabItem Header="Lägg till Feed" Margin="0,-1,-134,1" Height="50" FontSize="21.333">
+            <Grid Background="white">
+                <Grid HorizontalAlignment="Left" Width="1214" Margin="29,0.2,0,9">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="293*"/>
+                        <ColumnDefinition Width="1002*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button x:Name="btn_removeFeedItem" Content="Ta bort feed" HorizontalAlignment="Left" VerticalAlignment="Top" Width="162" Margin="220,1066,0,0" Height="41" RenderTransformOrigin="1.028,1.09" Click="btn_addFeedItem_Click" Background="Crimson" Grid.ColumnSpan="2"/>
+                    <Button x:Name="btn_addFeedItem" Content="Lägg till feed" HorizontalAlignment="Left" VerticalAlignment="Top" Width="222" Margin="265.6,501,0,0" Height="83" RenderTransformOrigin="1.028,1.09" Click="btn_addFeedItem_Click" Background="LightGreen" FontSize="18.667" Grid.Column="1"/>
+                    <TextBox x:Name="txtFeedName" Height="56" TextWrapping="Wrap" VerticalAlignment="Top" Margin="192,345,640,0" FontSize="18" BorderThickness="3" Grid.ColumnSpan="2"/>
+                    <TextBox x:Name="txtUrl" HorizontalAlignment="Left" Height="55" TextWrapping="Wrap" VerticalAlignment="Top" Width="383" Margin="192,213,0,0" FontSize="18" BorderThickness="3" Grid.ColumnSpan="2"/>
+                    <Label x:Name="lblFeedNamn" Content="Namn" HorizontalAlignment="Left" Margin="57,345,0,0" VerticalAlignment="Top" Width="110" FontSize="22" Height="34"/>
+                    <Label x:Name="lblUrl" Content="Url" HorizontalAlignment="Left" Margin="57,215,0,0" VerticalAlignment="Top" Width="110" FontSize="22" Height="53"/>
+                    <ComboBox x:Name="cbCategory" SelectedIndex="0" HorizontalAlignment="Right" VerticalAlignment="Top" Width="288" Margin="0,206,63,0" Height="62" FontSize="18" Grid.Column="1" BorderThickness="3"/>
+                    <Label x:Name="lblComboCat" Content="Kategori" HorizontalAlignment="Left" Margin="378,218,0,0" VerticalAlignment="Top" Width="110" FontSize="22" RenderTransformOrigin="-0.137,0.684" Height="50" Grid.Column="1"/>
+                    <Label x:Name="lblLaggTill" Content="Lägg till ny feed" HorizontalAlignment="Left" Margin="247.6,47,0,0" VerticalAlignment="Top" Width="304" Height="66" FontSize="33.333" Grid.Column="1" FontStyle="Italic"/>
+                    <ComboBox x:Name="cbInterval" SelectedIndex="0" HorizontalAlignment="Right" VerticalAlignment="Top" Width="288" Margin="0,339,63,0" Height="62" FontSize="18" BorderThickness="3" Grid.Column="1">
+                        <ComboBoxItem Content="Aldrig"/>
+                        <ComboBoxItem Content="Varje timme"/>
+                        <ComboBoxItem Content="Varje dag"/>
+                    </ComboBox>
+                    <Label x:Name="lblComboInterval" Content="Uppdatering" HorizontalAlignment="Left" Margin="378,351,0,0" VerticalAlignment="Top" Width="136" FontSize="22" RenderTransformOrigin="-0.137,0.684" Height="50" Grid.Column="1"/>
+                </Grid>
+            </Grid>
+        </TabItem>
+        <TabItem Header="Dina Feeds" Margin="138,-1,-274,1" Height="50" FontSize="21.333">
+            <Grid Background="white" Margin="0,0,-0.4,0.4">
+                <ListBox x:Name="FeedList" HorizontalAlignment="Left" Height="350" VerticalAlignment="Top" Width="303" Margin="43,250,0,0" BorderThickness="4" Background="FloralWhite" SelectionChanged="FeedList_SelectionChanged" FontSize="20" Foreground="#FF110606"/>
+                <TextBlock x:Name="txtFeedItemInfo" HorizontalAlignment="Left" Text="" VerticalAlignment="Top" Margin="671,250,0,0" Height="362" Width="309" Foreground="#FF080101" FontSize="12" Background="#FFF7F3F3" ScrollViewer.CanContentScroll="True" ScrollViewer.HorizontalScrollBarVisibility="Auto" TextWrapping="Wrap" ScrollViewer.VerticalScrollBarVisibility="Auto"/>
+                <ListBox x:Name="FeedItemList" HorizontalAlignment="Left" Height="350" VerticalAlignment="Top" Width="325" Margin="346,250,0,0" BorderThickness="4" Background="FloralWhite" SelectionChanged="FeedItemList_SelectionChanged" FontSize="14" Foreground="Black"/>
+                <Label x:Name="lblFeedList" Content="Feeds" HorizontalAlignment="Left" Margin="159,211,0,0" VerticalAlignment="Top" Width="64" FontSize="18" RenderTransformOrigin="-0.137,0.684" Height="34"/>
+                <Label x:Name="lblFeedItemList" Content="Podcasts" HorizontalAlignment="Left" Margin="456,211,0,0" VerticalAlignment="Top" Width="110" FontSize="18" RenderTransformOrigin="-0.137,0.684" Height="34"/>
+                <Label x:Name="lblRSSFeed" Content="Innehåll" HorizontalAlignment="Left" Margin="779,211,0,0" VerticalAlignment="Top" Width="110" FontSize="18" RenderTransformOrigin="-0.137,0.684" Height="34"/>
+                <Button x:Name="btnRemoveFeed" Content="Ta bort feed" HorizontalAlignment="Left" Margin="43,618,0,0" Background="Salmon" VerticalAlignment="Top" Width="165" Height="56" Click="btnRemoveFeed_Click"/>
+                <ComboBox x:Name="cbCategory_Sort" SelectedIndex="0" HorizontalAlignment="Right" VerticalAlignment="Top" Width="303" Margin="0,142,948.4,0" Height="50" SelectionChanged="cbCategory_Sort_SelectionChanged" FontSize="16" BorderThickness="3"/>
+                <TextBox x:Name="txtUrl_Change" HorizontalAlignment="Left" Height="39" TextWrapping="Wrap" VerticalAlignment="Top" Width="245" Margin="1013,310,0,0" FontSize="14" BorderThickness="3"/>
+                <Label x:Name="lblUrl_Change" Content="Url" HorizontalAlignment="Left" Margin="1013,261,0,0" VerticalAlignment="Top" Width="53" FontSize="18" Height="49"/>
+                <ComboBox x:Name="cbCategory_Change" HorizontalAlignment="Right" VerticalAlignment="Top" Width="221" Margin="0,454,60.4,0" Height="41" FontSize="14" BorderThickness="3"/>
+                <Label x:Name="lblComboCat_Copy" Content="Kategori" HorizontalAlignment="Left" Margin="1013,406,0,0" VerticalAlignment="Top" Width="137" FontSize="18" RenderTransformOrigin="-0.137,0.684" Height="43"/>
+                <Button x:Name="btn_change" Content="Ändra" Background="LightBlue" HorizontalAlignment="Left" Margin="1013,567,0,0" VerticalAlignment="Top" Width="137" Height="45" Click="btn_change_Click"/>
+                <Label x:Name="lblSort" Content="Sortera efter kategori" HorizontalAlignment="Left" Margin="43,99,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.154,0.421"/>
+                <CheckBox x:Name="CbxShowAll" Content="Visa alla feeds" HorizontalAlignment="Left" Margin="392,142,0,0" VerticalAlignment="Top" Width="184" BorderThickness="3" ClickMode="Press" IsChecked="True" Padding="20,-7,0,0" Height="50" Checked="CbxShowAll_Checked" Unchecked="CbxShowAll_Unchecked"/>
+                <Button x:Name="btn_getMedia" Background="MediumPurple" Content="Hämta media" HorizontalAlignment="Left" Margin="346,618,0,0" VerticalAlignment="Top" Width="135" Height="38" Click="btn_getMedia_Click"/>
+                <Label x:Name="lblViewedOrNot" Content=" " HorizontalAlignment="Left" Margin="486,618,0,0" VerticalAlignment="Top" Width="185"/>
+                <Label x:Name="lblLaggTill_Copy" Content="Dina Feeds" HorizontalAlignment="Left" Margin="556,28,0,0" VerticalAlignment="Top" Width="304" Height="66" FontSize="33.333" FontStyle="Italic"/>
+            </Grid>
+        </TabItem>
+        <TabItem Header="Kategorihantering" Margin="280,-1,-348,1" Height="50" FontSize="21.333">
+            <Grid Background="white" Margin="0,1,-0.4,-1">
+                <ListBox x:Name="lbCategory" HorizontalAlignment="Left" Height="442" Margin="784,94,0,0" VerticalAlignment="Top" Width="326" FontSize="20" Background="#FFFBF7F7" BorderThickness="3"/>
+                <Button x:Name="btnAddCategory" Content="Lägg till" HorizontalAlignment="Left" Background="LightGreen" Margin="341,416,0,0" VerticalAlignment="Top" Width="142" RenderTransformOrigin="-0.533,0.438" Height="60" Click="btnAddCategory_Click"/>
+                <Button x:Name="btnRemoveCategory" Content="Ta bort" HorizontalAlignment="Left" Background="Salmon" Margin="863,560,0,0" VerticalAlignment="Top" Width="154" Height="58" RenderTransformOrigin="0.282,0.388" Click="btnRemoveCategory_Click"/>
+                <Label x:Name="label" Content="Kategorier" HorizontalAlignment="Left" Margin="881,47,0,0" FontSize="24" VerticalAlignment="Top" Width="208" RenderTransformOrigin="0.696,0.632"/>
+                <TextBox x:Name="txtAddCategory" HorizontalAlignment="Left" Height="78" Margin="201,288,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="425" BorderThickness="3"/>
+                <Label x:Name="lblNewCategory" Content="Mata in nytt kategorinamn:" HorizontalAlignment="Left" Margin="282,245,0,0" VerticalAlignment="Top" Width="278"/>
+            </Grid>
+        </TabItem>
+    </TabControl>
+</Window>
